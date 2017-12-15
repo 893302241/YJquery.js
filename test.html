@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"> 
+	<title>test</title>
+	<script src='YJquery.js'></script>
+	<!-- <script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script> -->
+</head>
+<style>
+	
+</style>
+<body>
+	<button id="but">显示</button>
+	<button class="but2">隐藏</button>
+	<div id="bg" style="width:303px;height:300px;background-color: red;"></div>	
+	<script type="text/javascript">
+	$(function(){
+		// $('#but').click(function(){
+		// 	alert(123)
+		// });
+		// $('#but').click(function(){
+		// 	alert(345)
+		// })
+		$('#but').click(function(){
+			console.log(document.getElementById('bg').style['height'],'js')
+			$('#bg').css('height','500px');
+			// alert($('.bg').css('height'))
+		})
+
+
+	})
+	</script>
+</body>
+</html>
