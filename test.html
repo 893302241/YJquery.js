@@ -22,12 +22,18 @@
 		// $('#but').click(function(){
 		// 	alert(345)
 		// })
-		$('#but').click(function(){
-			console.log(document.getElementById('bg').style['height'],'js')
-			$('#bg').css('height','500px');
-			// alert($('.bg').css('height'))
-		})
-
+		// $('#but').click(function(){
+		// 	console.log(document.getElementById('bg').style.height,'js')
+		// 	$('#bg').css('height','500px');
+		// })
+			$('#but').toggle(
+				function(){
+					console.log($('#bg').attr('width','500px'))
+				},
+				function(){
+					console.log($('#bg').attr('width','303px'))
+				}
+			)
 
 	})
 	</script>

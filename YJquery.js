@@ -5,7 +5,9 @@
 
 function myAddEvent(obj,ev,fn){
 	if(obj.attachEvent){
-		obj.attachEvent('on'+ev,fn)
+		obj.attachEvent('on'+ev,function(){
+			fn.call(obj)//改变IE9以下浏览器this指向
+		})
 	}else{
 		obj.addEventListener(ev,fn,false)
 	}
@@ -76,11 +78,31 @@ YJquery.prototype.hover=function(inFn,outFn){
 YJquery.prototype.css=function(attr,value){
 	if(arguments.length==2){
 		for(var i=0,len=this.elements.length;i<len;i++){
-			console.log(this.elements[i].style,'jquery')
 			this.elements[i].style[attr]=value
 		}
 	}else{
 		return getStyle(this.elements[0],attr)
+	}
+}
+YJquery.prototype.toggle=function(){
+	var _arguments=arguments;
+	for(var i=0;i<this.elements.length;i++){
+		addToggle(this.elements[i])
+	}
+	function addToggle(obj){
+		var count=0;
+		myAddEvent(obj,'click',function(){
+			_arguments[count++%_arguments.length].call(obj)
+		})
+	}
+}
+YJquery.prototype.attr=function(obj,value){
+	if(arguments.length==2){
+		for(var i=0,len=this.elements.length;i<len;i++){
+			this.elements[i].style[obj]=value
+		}
+	}else{
+		return getStyle(this.elements[0],obj)
 	}
 }
 function $(Arg){
